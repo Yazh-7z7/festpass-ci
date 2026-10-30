@@ -1,0 +1,41 @@
+$ java -jar festpass.jar help
+FestPass - campus event registration (Yazh-7z7)
+Usage: java -jar build/festpass.jar [--data FILE] COMMAND
+  add-event ID "TITLE" CAPACITY
+  list
+  book EVENT_ID STUDENT_ID
+  cancel EVENT_ID STUDENT_ID
+  roster EVENT_ID
+  summary
+  help
+Default data file: data/festpass.tsv
+IDs are case-sensitive. Use synthetic student IDs, not personal data.
+Exit codes: 0 success, 2 invalid request, 3 storage failure.
+
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv add-event java "Java Workshop" 2
+EVENT CREATED: java
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv book java S1
+BOOKING ACCEPTED: S1 -> java
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv book java S2
+BOOKING ACCEPTED: S2 -> java
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv book java S3
+Invalid input: SOLD OUT. Even the developer needs a ticket.
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv cancel java S1
+BOOKING CANCELLED: S1 -> java
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv book java S3
+BOOKING ACCEPTED: S3 -> java
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv roster java
+ROSTER: java
+S2
+S3
+2 student(s)
+
+$ java -jar festpass.jar --data /tmp/evidence-demo.tsv summary
+Events: 1 | Booked: 2 | Available: 0

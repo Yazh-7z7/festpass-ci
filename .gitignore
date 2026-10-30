@@ -1,0 +1,21 @@
+# Runtime & Build outputs
+jenkins-lab/runtime/
+jenkins-lab/downloads/
+festpass-java/build/
+festpass-java/data/
+festpass-java/.git.bak/
+build/
+data/
+
+# Compiled Java & logs
+*.class
+*.log
+*.lock
+*.tsv.lock
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
